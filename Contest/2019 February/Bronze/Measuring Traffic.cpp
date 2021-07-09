@@ -5,7 +5,7 @@ int main() {
     ios_base::sync_with_stdio(false), cin.tie(nullptr);
 
     int N; cin >> N; 
-	  int A[101], B[101];
+    int A[101], B[101];
     string S[101];
     for (int i = 0; i < N; ++i) {
     	cin >> S[i] >> A[i] >> B[i];
