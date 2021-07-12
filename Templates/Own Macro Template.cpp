@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/tree_policy.hpp>
+#include <ext/pb_ds/assoc_container.hpp>
 
 using namespace std;
 
@@ -26,11 +28,11 @@ typedef vector<pair<int, int>> vpi;
 #define all(x) x.begin(), x.end()
 
 template<class T> bool ckmin(T& a, const T& b) { 
-    return b < a ? a = b, 1 : 0; 
+	return b < a ? a = b, 1 : 0; 
 }
  
 template<class T> bool ckmax(T& a, const T& b) {
-    return a < b ? a = b, 1 : 0; 
+	return a < b ? a = b, 1 : 0; 
 }
  
 template<class Fun>
@@ -48,7 +50,7 @@ public:
  
 template<class Fun>
 decltype(auto) y_combinator(Fun &&fun) {
-    return     y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
+    return 	y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
 }
 
 void dbg_out() { cerr << endl; }
@@ -58,19 +60,21 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) {
 }
 
 const int MOD = 1000000007;
+const ll INF = 1e18;
+const int MX = 100001;
 
 void solve() {
 
-    // TODO: make sure all variable get reset.
+	// TODO: make sure all variable get reset.
 }
 
 int main() {
-    ios_base::sync_with_stdio(false), cin.tie(nullptr);
+	ios_base::sync_with_stdio(false), cin.tie(nullptr);
 
-    int T; cin >> T;
-    while(T--) {
-        solve();
-    }
+	int T; cin >> T;
+	while(T--) {
+		solve();
+	}
 
-    return 0;
+	return 0;
 }
