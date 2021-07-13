@@ -33,11 +33,6 @@ const int MAX = 100001;
 const ll INF = 1e18;
 const ld PI = acos((ld)-1);
 
-/*
-* Find my template here 
-* https://github.com/Ahmedsabib/USACO/blob/main/Templates/Own%20Macro%20Template.cpp
-*/
-
 template<class T> bool ckmin(T& a, const T& b) { 
     return b < a ? a = b, 1 : 0; 
 }
