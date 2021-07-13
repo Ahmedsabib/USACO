@@ -5,6 +5,7 @@
 using namespace std;
 
 typedef long long ll;
+typedef long long ld;
 
 typedef vector<int> vi;
 typedef set<int> si;
@@ -27,14 +28,19 @@ typedef vector<pair<int, int>> vpi;
 #define UB upper_bound
 #define all(x) x.begin(), x.end()
 
-template<class T> bool ckmin(T& a, const T& b) { 
-	return b < a ? a = b, 1 : 0; 
-}
- 
-template<class T> bool ckmax(T& a, const T& b) {
-	return a < b ? a = b, 1 : 0; 
-}
- 
+const int MOD = 1e9+7;
+const int MAX = 100001;
+const ll INF = 1e18;
+const ld PI = acos((ld)-1);
+
+/*
+* Find my template here 
+* https://github.com/Ahmedsabib/USACO/blob/main/Templates/Own%20Macro%20Template.cpp
+*/
+
+template<class T> bool ckmin(T& a, const T& b) { return b < a ? a = b, 1 : 0; }
+template<class T> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
+
 template<class Fun>
 class y_combinator_result {
     Fun fun_;
@@ -50,31 +56,59 @@ public:
  
 template<class Fun>
 decltype(auto) y_combinator(Fun &&fun) {
-    return 	y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
+    return     y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
 }
 
 void dbg_out() { cerr << endl; }
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
 
-template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) {
-    cerr << ' ' << H; dbg_out(T...); 
+namespace io {
+    //template taken by bqi343
+    //INPUT
+    void re(double& x) { string t; cin >> t; x = stod(t); } 
+    void re(ld& x) { string t; cin >> t; x = stold(t); }
+    template<class T> void re(T& x) { cin >> x; }
+    template<class Arg, class... Args> void re(Arg& first, Args&... rest) { 
+        re(first); re(rest...); 
+    }
+    template<class T1, class T2> istream& operator>>(istream& is, pair<T1,T2>& p) {
+        is >> p.f >> p.s; return is;
+    }
+    template<class T> istream& operator>>(istream& is, vector<T>& a) {
+        F0R(i,sz(a)) is >> a[i];
+        return is;
+    }
+
+    //OUTPUT
+    template<class T> void pr(const T& x) { cout << x << '\n'; }
+    template<class Arg, class... Args> void pr(const Arg& first, const Args&... rest) { 
+        cout << first << ' '; pr(rest...); 
+    }
+    template<class T1, class T2> ostream& operator<<(ostream& os, const pair<T1,T2>& a) {
+        os << '{' << a.f << ", " << a.s << '}'; return os;
+    }
+    template<class T> ostream& operator<<(ostream& os, const vector<T>& a) {
+        F0R(i,sz(a)) {
+            os << a[i] << ' ';
+        }
+        return os;
+    }
 }
 
-const int MOD = 1000000007;
-const ll INF = 1e18;
-const int MX = 100001;
+using namespace io;
 
 void solve() {
 
-	// TODO: make sure all variable get reset.
+    // TODO: make sure all variable get reset.
 }
 
 int main() {
-	ios_base::sync_with_stdio(false), cin.tie(nullptr);
+    ios_base::sync_with_stdio(false), cin.tie(nullptr);
 
-	int T; cin >> T;
-	while(T--) {
-		solve();
-	}
+    int T; re(T);
+    while(T--) {
+        solve();
+    }
 
-	return 0;
+    return 0;
 }
