@@ -33,9 +33,19 @@ const int MAX = 100001;
 const ll INF = 1e18;
 const ld PI = acos((ld)-1);
 
-template<class T> bool ckmin(T& a, const T& b) { return b < a ? a = b, 1 : 0; }
-template<class T> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
+/*
+* Find my template here 
+* https://github.com/Ahmedsabib/USACO/blob/main/Templates/Own%20Macro%20Template.cpp
+*/
 
+template<class T> bool ckmin(T& a, const T& b) { 
+    return b < a ? a = b, 1 : 0; 
+}
+ 
+template<class T> bool ckmax(T& a, const T& b) {
+    return a < b ? a = b, 1 : 0; 
+}
+ 
 template<class Fun>
 class y_combinator_result {
     Fun fun_;
@@ -51,11 +61,14 @@ public:
  
 template<class Fun>
 decltype(auto) y_combinator(Fun &&fun) {
-    return     y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
+    return  y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
 }
 
 void dbg_out() { cerr << endl; }
-template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
+
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) {
+    cerr << ' ' << H; dbg_out(T...); 
+}
 
 namespace io {
     //template taken by bqi343
