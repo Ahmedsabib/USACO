@@ -5,36 +5,77 @@
 using namespace std;
 
 typedef long long ll;
-typedef long long ld;
+typedef long double ld;
 
+//pairs
+typedef pair<int, int> pi;
+typedef pair<long long, long long> pl;
+typedef pair<long double, long double> pd;
+
+//vectors
 typedef vector<int> vi;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<pd> vpd;
+typedef vector<char> vc;
+typedef vector<bool> vb;
+typedef vector<string> vs;
+typedef vector<long long> vl;
+typedef vector<long double> vd;
+typedef vector<vector<int>> vvi;
+typedef vector<vector<long long>> vvl;
+
+//sets
 typedef set<int> si;
-typedef pair<int,int> pi;
-typedef map<int, int> mp;
-typedef vector<pair<int, int>> vpi;
+typedef set<long long> sl;
+typedef set<long double> sd;
 
-#define F0R(i, a) for (int i=0; i<(a); i++)
-#define FOR(i, a) for (int i=a-1; i>=0; i--)
-#define REP(i,a,b) for (int i=a; i<(b); i++)
-#define PER(i,a,b) for (int i=b-1; i >=(a); i--)
-#define Trav(a, x) for (auto& a: x)
+//maps
+typedef map<int, int> mpi;
+typedef map<char, int> mpc;
+typedef map<long long, long long> mpl;
+typedef map<long double, long double> mpd;
 
-#define sz(x) (int)(x).size()
+//iterators
+#define trav(a, x) for (auto& a: x)
+#define F0R(i, a) for (int i = 0; i < (a); i++)
+#define R0F(i, a) for (int i = a-1; i >= 0; i--)
+#define REP(i, a, b) for (int i = a; i < (b); i++)
+#define PER(i, a, b) for (int i = b-1; i >= (a); i--)
+#define FOR(i, a, b, x) for (int i = a; i < b; i += x)
+#define ROF(i, a, b, x) for (int i = a-1; i >= (b); i -= x)
+
+//useful macros
+#define str string
+#define rsz resize
+#define ins insert
 #define F first
 #define S second
-#define PB push_back
 #define MP make_pair
+#define PB push_back
+#define PF push_front
 #define LB lower_bound
 #define UB upper_bound
+#define EB emplace_back
+#define bk back()
+#define ft front()
+#define bg(x) begin(x)
+#define sz(x) int((x).size())
 #define all(x) x.begin(), x.end()
+#define rall(x) x.rbegin(), x.rend()
 
+//const values
 const int MOD = 1e9+7;
 const int MAX = 100001;
 const ll INF = 1e18;
-const ld PI = acos((ld)-1);
+
+/*
+* Find my template here 
+* https://github.com/Ahmedsabib/USACO/blob/main/Templates/Own%20Macro%20Template.cpp
+*/
 
 namespace io {
-    //io template taken by bqi343
+    //io template taken from bqi343
     //INPUT
     void re(double& x) { string t; cin >> t; x = stod(t); } 
     void re(ld& x) { string t; cin >> t; x = stold(t); }
@@ -69,12 +110,13 @@ namespace io {
 using namespace io;
 
 void solve() {
-
+    
     // TODO: make sure all variable get reset.
 }
 
 int main() {
-    ios_base::sync_with_stdio(false), cin.tie(nullptr);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int T; re(T);
     while(T--) {
