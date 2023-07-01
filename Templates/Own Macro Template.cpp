@@ -137,7 +137,6 @@ int main() {
     while(TC--) {
         solve();  // let's solve this problem!
     }
-
     return 0;
 }
 // 10 Steps to Solve Any Problems:
