@@ -3,6 +3,7 @@
 #include <ext/pb_ds/assoc_container.hpp>
  
 using namespace std;
+using namespace __gnu_pbds;
  
 typedef long long ll;
 typedef long double ld;
@@ -87,6 +88,9 @@ const ll INF = 1e18;
 * Find my template here 
 * https://github.com/Ahmedsabib/USACO/blob/main/Templates/Own%20Macro%20Template.cpp
 */
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> indexed_set;
  
 // macros for reading inputs and printing outputs of the problem
 namespace io {
@@ -126,18 +130,18 @@ using namespace io;
 
 void solve() {
     
-    // TODO: make sure all variable get reset.
+  // TODO: make sure all variable get reset.
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);  // fast input-output
-    cin.tie(nullptr);
+  ios_base::sync_with_stdio(false);  // fast input-output
+  cin.tie(nullptr);
 
-    int TC; re(TC);
-    while(TC--) {
-        solve();  // let's solve this problem!
-    }
-    return 0;
+  int TC; re(TC);
+  while(TC--) {
+    solve();  // let's solve this problem!
+  }
+  return 0;
 }
 // 10 Steps to Solve Any Problems:
 // 1.Read the problem completely at least two or three times (or however many makes you feel comfortable)
