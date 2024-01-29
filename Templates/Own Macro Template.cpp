@@ -89,47 +89,56 @@ const ll INF = 1e18;
 * https://github.com/Ahmedsabib/USACO/blob/main/Templates/Own%20Macro%20Template.cpp
 */
 
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> indexed_set;
+template <typename T>
+using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
  
 // macros for reading inputs and printing outputs of the problem
 namespace io {
-    // io template taken from bqi343
-    // INPUT
-    void re(double& x) { string t; cin >> t; x = stod(t); } 
-    void re(ld& x) { string t; cin >> t; x = stold(t); }
-    template<class T> void re(T& x) { cin >> x; }
-    template<class Arg, class... Args> void re(Arg& first, Args&... rest) { 
-        re(first); re(rest...); 
-    }
-    template<class T1, class T2> istream& operator>>(istream& is, pair<T1,T2>& p) {
-        is >> p.f >> p.s; return is;
-    }
-    template<class T> istream& operator>>(istream& is, vector<T>& a) {
-        F0R(i,sz(a)) is >> a[i];
-        return is;
-    }
+  // io template taken from bqi343
+  // INPUT
+  void re(double& x) { string t; cin >> t; x = stod(t); } 
+  void re(ld& x) { string t; cin >> t; x = stold(t); }
+  template<class T> void re(T& x) { cin >> x; }
+  template<class Arg, class... Args> void re(Arg& first, Args&... rest) { 
+    re(first); re(rest...); 
+  }
+  template<class T1, class T2> istream& operator>>(istream& is, pair<T1,T2>& p) {
+    is >> p.f >> p.s; return is;
+  }
+  template<class T> istream& operator>>(istream& is, vector<T>& a) {
+    F0R(i,sz(a)) is >> a[i];
+    return is;
+  }
  
-    // OUTPUT
-    template<class T> void pr(const T& x) { cout << x << '\n'; }
-    template<class Arg, class... Args> void pr(const Arg& first, const Args&... rest) { 
-        cout << first << ' '; pr(rest...); 
+  // OUTPUT
+  template<class T> void pr(const T& x) { cout << x << '\n'; }
+  template<class Arg, class... Args> void pr(const Arg& first, const Args&... rest) { 
+    cout << first << ' '; pr(rest...); 
+  }
+  template<class T1, class T2> ostream& operator<<(ostream& os, const pair<T1,T2>& a) {
+    os << '{' << a.f << ", " << a.s << '}'; return os;
+  }
+  template<class T> ostream& operator<<(ostream& os, const vector<T>& a) {
+    F0R(i,sz(a)) {
+      os << a[i] << ' ';
     }
-    template<class T1, class T2> ostream& operator<<(ostream& os, const pair<T1,T2>& a) {
-        os << '{' << a.f << ", " << a.s << '}'; return os;
+    return os;
+  }
+  
+  // PRINT VECTOR
+  template<typename T_vector>
+  void output_vector(const T_vector &v, bool add_one = false, int start = -1, int end = -1) {
+    if (start < 0) start = 0;
+    if (end < 0) end = int(v.size());
+    for (int i = start; i < end; i++) {
+      cout << v[i] + (add_one ? 1 : 0) << (i < end - 1 ? ' ' : '\n');
     }
-    template<class T> ostream& operator<<(ostream& os, const vector<T>& a) {
-        F0R(i,sz(a)) {
-            os << a[i] << ' ';
-        }
-        return os;
-    }
+  }
 }
  
 using namespace io;
 
 void solve() {
-    
   // TODO: make sure all variable get reset.
 }
 
