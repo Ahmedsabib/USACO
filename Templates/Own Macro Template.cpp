@@ -4,52 +4,80 @@
  
 using namespace std;
 using namespace __gnu_pbds;
- 
-typedef long long ll;
-typedef long double ld;
- 
+
+using ll = long long;
+using ld = long double;
+using str = string;
+
 // pairs
-typedef pair<int, int> pi;
-typedef pair<long long, long long> pl;
-typedef pair<long double, long double> pd;
- 
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using pd = pair<ld, ld>;
+
+// templates for macro ds
+template <class T> using SET = set<T>;
+template <class T> using QUE = queue<T>;
+template <class T> using STK = stack<T>;
+template <class T> using DEQ = deque<T>;
+template <class T> using VEC = vector<T>;
+template <class T> using VEC_V = vector<vector<T>>;
+template <class T> using PRI_QUE = priority_queue<T>;
+template <class T, size_t SZ> using AR = array<T, SZ>;
+template <class T1, class T2> using MAP = map<T1, T2>;
+template <class T1, class T2> using MAP_VEC = map<T1, vector<T2>>;
+template <class T> using PRIO_QUE = priority_queue<T, vector<T>, greater<T>>;
+
 // vectors
-typedef vector<int> vi;
-typedef vector<pi> vpi;
-typedef vector<pl> vpl;
-typedef vector<pd> vpd;
-typedef vector<char> vc;
-typedef vector<bool> vb;
-typedef vector<string> vs;
-typedef vector<long long> vl;
-typedef vector<long double> vd;
-typedef vector<vector<int>> vvi;
-typedef vector<vector<long long>> vvl;
- 
+using vi = VEC<int>;
+using vb = VEC<bool>;
+using vc = VEC<char>;
+using vl = VEC<ll>;
+using vd = VEC<ld>;
+using vs = VEC<str>;
+using vpi = VEC<pii>;
+using vpl = VEC<pll>;
+using vpd = VEC<pd>;
+using vvi = VEC_V<int>;
+using vvl = VEC_V<ll>;
+using vvd = VEC_V<ld>;
+using vvs = VEC_V<str>;
+
 // sets
-typedef set<int> si;
-typedef set<long long> sl;
-typedef set<long double> sd;
- 
+using si = SET<int>;
+using sc = SET<char>;
+using sl = SET<ll>;
+using sd = SET<ld>;
+using ss = SET<str>;
+
 // maps
-typedef map<int, int> mpi;
-typedef map<char, int> mpc;
-typedef map<long long, long long> mpl;
-typedef map<long double, long double> mpd;
- 
+using mpi = MAP<int, int>;
+using mpc = MAP<char, int>;
+using mpl = MAP<ll, ll>;
+using mpd = MAP<ld, ld>;
+using mpv = MAP<ll, vl>;
+
 // containers
-typedef queue<int> qi;
-typedef deque<int> dqi;
-typedef stack<int> sti;
-typedef queue<char> qc;
-typedef deque<char> dqc;
-typedef stack<char> stc;
-typedef queue<string> qs;
-typedef deque<string> dqs;
-typedef stack<string> sts;
-typedef priority_queue<int> pqi;
-typedef priority_queue<char> pqc;
-typedef priority_queue<string> pqs;
+using qi = QUE<int>;
+using ql = QUE<ll>;
+using qc = QUE<char>;
+using qs = QUE<str>;
+using dqi = DEQ<int>;
+using dql = DEQ<ll>;
+using dqc = DEQ<char>;
+using dqs = DEQ<str>;
+using sti = STK<int>;
+using stll = STK<ll>;
+using stc = STK<char>;
+using sts = STK<str>;
+using minpqi = PRIO_QUE<int>;
+using minpql = PRIO_QUE<ll>;
+using minpqc = PRIO_QUE<char>;
+using minpqs = PRIO_QUE<str>;
+using minpii = PRI_QUE<pii>;
+using maxpqi = PRI_QUE<int>;
+using maxpql = PRI_QUE<ll>;
+using maxpqc = PRI_QUE<char>;
+using maxpqs = PRI_QUE<str>;
  
 // iterators
 #define trav(a, x) for (auto& a: x)
@@ -61,7 +89,6 @@ typedef priority_queue<string> pqs;
 #define ROF(i, a, b, x) for (int i = a-1; i >= (b); i -= x)
  
 // useful macros
-#define str string
 #define rsz resize
 #define ins insert
 #define F first
@@ -78,12 +105,50 @@ typedef priority_queue<string> pqs;
 #define sz(x) int((x).size())
 #define all(x) x.begin(), x.end()
 #define rall(x) x.rbegin(), x.rend()
- 
+#define fprec fixed << setprecision
+
+// for every grid problems
+const int dx[] = {1, -1, 0, 0};
+const int dy[] = {0, 0, 1, -1};
+
+// bitwise operations
+const int set_bit(int x, int pos) {return x = x | (1 << pos);}
+const int reset_bit(int x, int pos) {return x = x & ~(1 << pos);}
+const int check_bit(int x, int pos) {return (x & (1 << pos));}
+constexpr int pct(int x) {return __builtin_popcount(x);}  // # of bits set
+constexpr int bits(int x) {return x == 0 ? 0 : 31 - __builtin_clz(x);}  // floor(log2(x))
+
 // constants limit
-const int MOD = 1e9+7;
-const int MAX = 100001;
 const ll INF = 1e18;
- 
+const int MAX = 200005;
+const int MOD = 1e9 + 7;
+const ld PI = acos((ld)-1);
+
+// templates for long codes
+template <class T> void rem_dup(vector<T> &v) {  // sort and remove duplicates
+  sort(all(v));
+  v.erase(unique(all(v)), end(v));
+}
+template <class T, class U> void safeErase(T &t, const U &u) {
+  auto it = t.find(u);
+  assert(it != end(t));
+  t.erase(it);
+}
+
+// namespace FileIO template taken from bqi343
+inline namespace FileIO {
+  void setIn(str s) { freopen(s.c_str(), "r", stdin); }
+  void setOut(str s) { freopen(s.c_str(), "w", stdout); }
+  void setIO(str s = "") {
+    cin.tie(0)->sync_with_stdio(0);  // unsync C / C++ I/O streams
+    cout << fixed << setprecision(12);
+    // cin.exceptions(cin.failbit);
+    // throws exception when do smth illegal
+    // ex. try to read letter into int
+    if (sz(s)) setIn(s + ".in"), setOut(s + ".out");  // for old USACO
+  }
+}
+
 /*
 * Find my template here 
 * https://github.com/Ahmedsabib/USACO/blob/main/Templates/Own%20Macro%20Template.cpp
@@ -91,6 +156,7 @@ const ll INF = 1e18;
 
 template <typename T>
 using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+mt19937 rng((uint32_t)chrono::steady_clock::now().time_since_epoch().count());
  
 // macros for reading inputs and printing outputs of the problem
 namespace io {
@@ -124,32 +190,26 @@ namespace io {
     }
     return os;
   }
-  
-  // PRINT VECTOR
-  template<typename T_vector>
-  void output_vector(const T_vector &v, bool add_one = false, int start = -1, int end = -1) {
-    if (start < 0) start = 0;
-    if (end < 0) end = int(v.size());
-    for (int i = start; i < end; i++) {
-      cout << v[i] + (add_one ? 1 : 0) << (i < end - 1 ? ' ' : '\n');
-    }
-  }
 }
  
 using namespace io;
 
-void solve() {
+void solve(int tc) {
   // TODO: make sure all variable get reset.
 }
 
 int main() {
-  ios_base::sync_with_stdio(false);  // fast input-output
-  cin.tie(nullptr);
+  setIO();  // fast input-output
 
   int TC; re(TC);
-  while(TC--) {
-    solve();  // let's solve this problem!
-  }
+  REP(i, 1, TC + 1) solve(i); // let's solve this problem!
+  
+  #ifdef LOCAL
+    auto end = std::chrono::high_resolution_clock::now();
+    cerr << fprec(10);
+    cerr << "Execution time: " << std::chrono::duration_cast<std::chrono::duration<ld>>(end - begin).count() << " seconds" << '\n';
+  #endif
+
   return 0;
 }
 // 10 Steps to Solve Any Problems:
