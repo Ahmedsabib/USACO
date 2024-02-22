@@ -14,7 +14,7 @@ using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 using pd = pair<ld, ld>;
 
-// templates for macro ds
+// templates for macro DS
 template <class T> using SET = set<T>;
 template <class T> using QUE = queue<T>;
 template <class T> using STK = stack<T>;
@@ -106,10 +106,15 @@ using maxpqs = PRI_QUE<str>;
 #define all(x) x.begin(), x.end()
 #define rall(x) x.rbegin(), x.rend()
 #define fprec fixed << setprecision
+#define MEM(x, y) memset(x, y, sizeof(x))
 
-// for every grid problems
+// for every grid problems!
+// 4 directions
 const int dx[] = {1, -1, 0, 0};
 const int dy[] = {0, 0, 1, -1};
+// 8 directions
+const int DX[] = { -1, -1, -1,  0, 0,  1, 1, 1 };
+const int DY[] = { -1,  0,  1, -1, 1, -1, 0, 1 };
 
 // bitwise operations
 const int set_bit(int x, int pos) {return x = x | (1 << pos);}
@@ -129,7 +134,7 @@ template <class T> void rem_dup(vector<T> &v) {  // sort and remove duplicates
   sort(all(v));
   v.erase(unique(all(v)), end(v));
 }
-template <class T, class U> void safeErase(T &t, const U &u) {
+template <class T, class U> void safe_erase(T &t, const U &u) {
   auto it = t.find(u);
   assert(it != end(t));
   t.erase(it);
