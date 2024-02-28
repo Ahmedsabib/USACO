@@ -123,6 +123,10 @@ const int check_bit(int x, int pos) {return (x & (1 << pos));}
 constexpr int pct(int x) {return __builtin_popcount(x);}  // # of bits set
 constexpr int bits(int x) {return x == 0 ? 0 : 31 - __builtin_clz(x);}  // floor(log2(x))
 
+// gcd - lcm
+const int lcm(int a, int b) {return (a*b)/gcd(a, b);};
+const int gcd(int a, int b) {return ((b == 0)? a : gcd(b, a%b));}
+
 // constants limit
 const ll INF = 1e18;
 const int MAX = 200005;
